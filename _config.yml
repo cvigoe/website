@@ -7,8 +7,9 @@ desc: >
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 
-url: ""      # put your website hosting url here
-baseurl: ''                 # the subpath of your site, e.g. /blog
+domain: cvigoe.github.io/  
+url: https://cvigoe.github.io/      # put your website hosting url here
+baseurl: /website/                 # the subpath of your site, e.g. /blog
 permalink: /:year/:title/   # how should we display posts url
 
 # Meta settings
