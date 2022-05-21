@@ -5,7 +5,7 @@ desc: Teaching examples during graduate school
 permalink: /teaching/
 ---
 
-<p>I am passionate about teaching and enjoy helping students from K-12 through to graduate school understand concepts in machine learning and mathematics. See my below for teaching examples.</p>
+<p>I am passionate about teaching and enjoy helping students from all backgrounds understand concepts in machine learning and mathematics. See below for teaching examples.</p>
 
 <h4 class="project-title"><a href="https://cmudeeprl.github.io/403_website/">10-403: Deep Reinforcement Learning & Control (Spring 2021)</a></h4>
 
