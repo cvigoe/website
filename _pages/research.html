@@ -23,7 +23,7 @@ permalink: /research/
 
       <div class="unit four-fifths">
         <div class="project">
-          <p>Recent work in Bayesian Optimal Experimental Design (BOED) has shown the value of using Deep Reinforcement Learning (DRL) to obtain highly efficient adaptive experimental designs. However, previous work requires extensive offline computation to achieve strong online performance. In this paper, we argue that a central bottleneck of DRL training for BOED is belief explosion. Specifically, as an agent progresses deeper into an experiment, the effective number of realisable beliefs grows enormously, placing significant sampling burdens on offline training schemes in an effort to gather experience from all regions of belief space. We argue that choosing an appropriate inductive bias for actor/critic networks is a critical component in mitigating the effects of belief explosion and has so far been overlooked in the BOED literature. We show how Graph Neural Networks are particularly well-suited for BOED DRL training due to their domain permutation equivariance properties, resulting in multiple orders of magnitude improvement to sample efficiency compared to naive parameterisations.</p>
+          <p>We propose using Graph Neural Networks with DRL for Bayesian Optimal Experimental Design. We illustrate how "Belief Explosion" is a significant bottleneck in BOED DRL training, requiring well-chosen inductive biases to reduce offline computation. Our approach improves sample efficiency by multiple orders of magnitude compared to naive parameterizations by leveraging permutation equivariance.</p>
         </div>
       </div>
     </div>           
@@ -42,7 +42,7 @@ permalink: /research/
 
       <div class="unit four-fifths">
         <div class="project">
-          <p>In human-interactive applications of online learning, a human's preferences or abilities are often a function of the algorithm's recent actions. Motivated by this, a significant line of work has formalized settings where an action's loss is a function of the number of times it was played in the prior $m$ timesteps, where $m$ corresponds to a bound on human memory capacity. To more faithfully capture decay of human memory with time, we introduce the Weighted Tallying Bandit (WTB), which generalizes this setting by requiring that an action's loss is a function of a weighted summation of the number of times it was played in the last $m$ timesteps. WTB is intractable without further assumption. So we study it under Repeated Exposure Optimality (REO), a condition requiring the existence of an action that when repetitively played will eventually yield smaller loss than any other action sequence. We study the minimization of complete policy regret (CPR), which is the strongest notion of regret, in WTB under REO. Since the precise value of $m$ is often unknown, we assume we only have access to an upper bound $M$ on $m$. We show that for problems with $K$ actions and horizon $T$, a simple modification of the successive elimination algorithm has a CPR bound of bigo ( sqrt KT + (m+M)K). Upto an additive (in lieu of mutliplicative) factor in $(m+M)K$, this recovers the classical guarantee for the far simpler stochastic multi-armed bandit with traditional regret. We additionally show that in our setting, any algorithm will suffer an additive CPR factor of bigomega ( mK + M ), demonstrating our result is near optimal. Our method is computationally efficient, and we experimentally demonstrate its practicality and superiority over various baselines.</p>
+          <p>We introduce the Weighted Tallying Bandit (WTB) problem setting, which generalizes previous online learning settings to capture the decay of human memory with time. We motivate the Repeated Exposure Optimality (REO) property and study the minimisation of Complete Policy Regret in WTB instances satisfying REO. We provide theory and simulation results showing how the Successive Elimination algorithm is well-suited for this class of problems.</p>
         </div>
       </div>
     </div>           
@@ -63,13 +63,11 @@ permalink: /research/
 
       <div class="unit four-fifths">
         <div class="project">
-          <p>The successful application of robotic control requires intelligent decision-making to handle the long tail of complex scenarios that arise in real-world environments. Recently, Deep Reinforcement Learning (DRL) has provided a data-driven framework to automatically learn effective policies in such complex settings. Since its introduction in 2018, Soft Actor-Critic (SAC) remains as one of the most popular off-policy DRL algorithms and has been used extensively to learn performant robotic control policies. However, in this paper we argue that by relying on the maximum entropy formalism to define learning objectives, previous work introduces a significant bias away from optimal decision making, which often requires near-deterministic behaviour for high-precision tasks. Moreover, we show that when training with the original variants of SAC, overcoming this bias by reducing entropy budgets or entropy coefficients introduces separate issues that lead to slow or unstable learning. We address these shortcomings by treating the entropy coefficient α as a random variable and introduce Multi-Alpha Soft Actor-Critic (MAS). We show how MAS overcomes the stochastic bias of SAC in a variety of robotic control tasks including the CARLA urban-driving simulator, while maintaining the stability and sample efficiency of the original algorithms.</p>
+          <p>Robotic control requires intelligent decision-making in complex scenarios. Soft Actor-Critic is a popular DRL algorithm but its entropy-based learning objective introduces bias. We show how naively reducing the bias leads to slow or unstable learning. We propose Multi-Alpha Soft Actor-Critic which treats the entropy coefficient as a random variable, overcoming the bias and maintaining stability and efficiency in robotic control tasks.</p>
         </div>
       </div>
     </div>       
-    
-    
-    
+
     
     
     <div class="unit whole">
@@ -82,7 +80,7 @@ permalink: /research/
 
       <div class="unit four-fifths">
         <div class="project">
-          <p>We challenge the recent view that test-time gradients offer unique advantages to OOD detection in deep networks. One critical challenge in deploying highly performant machine learning models in real-life applications is out of distribution (OOD) detection. Given a predictive model which is accurate on in distribution (ID) data, an OOD detection system will further equip the model with the option to defer prediction when the input is novel and the model has little confidence in prediction. There has been some recent interest in utilizing the gradient information in pre-trained models for OOD detection. While these methods have shown competitive performance, there are misconceptions about the true mechanism underlying them, which conflate their performance with the necessity of gradients. In this work, we provide an in-depth analysis and comparison of gradient based methods and elucidate the key components that warrant their OOD detection performance. We further propose a general, non-gradient based method of OOD detection which improves over previous baselines in both performance and computational efficiency.</p>
+          <p>Detecting when a model is unable to make accurate predictions is crucial for real-world applications. Previous methods utilizing test-time gradients for OOD detection have shown competitive performance, but there are misconceptions about the necessity of gradients. In this work, we provide an in-depth analysis of test-time gradients and propose a general, non-gradient-based method of OOD detection.</p>
         </div>
       </div>
     </div>        
@@ -104,7 +102,7 @@ permalink: /research/
 
       <div class="unit four-fifths">
         <div class="project">
-          <p>We argue that Deep RL is a particularly strong choice for active search tasks from decision-theoretic and computational perspectives. Multi-Agent Active Search (MAAS) is an active learning problem with the objective of locating sparse targets in an unknown environment by actively making data-collection decisions. Recently proposed algorithms, although well-motivated from a theoretical perspective, are limited in three key ways: they are either explicitly myopic (e.g. with respect to information gain) or introduce strong biases that fall short of fully non-myopic behaviour; they employ general-purpose coordination mechanisms to scale to multi-agent settings without optimising for any specific agent configuration; and they involve significant online computation to determine suitable sensing regions. In this letter, we introduce a Poisson Point Process formulation and cast MAAS as a Reinforcement Learning problem, learning policies in belief space of the associated POMDP. We demonstrate how such an approach can overcome each of the three issues of previous algorithms and is surprisingly robust to test-time miscommunication.</p>
+          <p>Multi-Agent Active Search (MAAS) is an active learning problem with the objective of locating sparse targets in an unknown environment by actively making data-collection decisions. We argue that Deep RL is a particularly strong choice for active search tasks from decision-theoretic and computational perspectives.</p>
         </div>
       </div>
     </div>      
@@ -127,7 +125,7 @@ permalink: /research/
 
       <div class="unit four-fifths">
         <div class="project">
-          <p>We study the canonical multi-armed bandit problem under delayed feedback. Recently proposed algorithms have desirable regret bounds in the delayed-feedback setting but require strict prior knowledge of expected delays. In this work, we study the regret of such delay-resilient algorithms under milder assumptions on delay distributions. We experimentally investigate known theoretical performance bounds and attempt to improve on a recently proposed algorithm by making looser assumptions on prior delay knowledge. Further, we investigate the relationship between delay assumptions and marking an arm as suboptimal.</p>
+          <p>We study the multi-armed bandit problem under delayed feedback. Recent algorithms have desirable regret bounds in the delayed-feedback setting but require strict prior knowledge of expected delays. We study the regret of such delay-resilient algorithms under milder assumptions. We empirically investigate known theoretical performance bounds and attempt to improve on a recently proposed algorithm by making looser assumptions on prior delay knowledge.</p>
         </div>
       </div>
     </div>       
@@ -138,7 +136,7 @@ permalink: /research/
     
     
     <div class="unit whole">
-      <h4 class="project-title"><a href="https://www.ri.cmu.edu/wp-content/uploads/2020/03/Generating_Highly_Predictive_Probabilistic_Models_Of_Task_Durations__Final_Version.pdf">Bayesian Modelling</a></h4>
+      <h4 class="project-title"><a href="https://www.ri.cmu.edu/wp-content/uploads/2020/03/Generating_Highly_Predictive_Probabilistic_Models_Of_Task_Durations__Final_Version.pdf">Hierarchical Bayesian Framework For Bus Dwell Time Prediction</a></h4>
       <div class="unit one-fifth">
         <div class="project">
           <img src="{{ site.baseurl }}/assets/img/bus.png" alt="Conor Igoe" width=200/>
@@ -147,7 +145,7 @@ permalink: /research/
 
       <div class="unit four-fifths">
         <div class="project">
-          <p>We develop Bayesian models of traffic phenomena for use in real-time adaptive signal control systems. In many applications, uncertainty regarding the duration of activities complicates the generation of accurate plans and schedules. Such is the case for the problem considered in this paper - predicting the arrival times of buses at signalized intersections. Direct vehicle-to-infrastructure communication of location, speed and heading information offers unprecedented opportunities for real-time optimization of traffic signal timing plans, but to be useful bus arrival time prediction must reliably account for bus dwell time at near-side bus stops. To address this problem, we propose a novel, Bayesian hierarchical approach for constructing bus dwell time duration distributions from historical data. Unlike traditional statistical learning techniques, the proposed approach relies on minimal data, is inherently adaptive to time varying task duration distribution, and provides a rich description of confidence for decision making, all of which are important in the bus dwell time prediction context. The effectiveness of this approach is demonstrated using historical data provided by a local transit authority on bus dwell times at urban bus stops. Our results show that the dwell time distributions generated by our approach yield significantly more accurate predictions than those generated by both standard regression techniques and a more data intensive deep learning approach.</p>
+          <p>We develop Bayesian models for predicting bus arrival times at signalized intersections. Our approach accounts for uncertainty in bus dwell time, which is crucial for accurate predictions. We use minimal data and provide a rich description of confidence for decision-making. Our results show that our approach yields significantly more accurate predictions than standard regression and deep learning techniques, making it useful for real-time traffic signal optimization.</p>
         </div>
       </div>
     </div>    
