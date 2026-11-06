@@ -29,6 +29,9 @@ navigation:
   - title: Research
     url: /research/
     desc: Stuffs I write about
+  - title: Writing etc.
+    url: /writing/
+    desc: Writing and interviews on Ireland and AI research
   - title: Teaching
     url: /teaching/
     desc: Stuffs I like to do
