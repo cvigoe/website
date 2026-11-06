@@ -15,8 +15,9 @@ author: Conor Igoe
 twitter_username: cvi94
 github_username: cvigoe
 
-# Put your ga tracking code below
-google_analytics: 'UA-XXXXXXXX-X'
+# GoatCounter site code (dashboard: https://cvigoe.goatcounter.com)
+# Only counts on the live site, not local previews
+goatcounter: cvigoe
 
 # Pagination settings
 paginate: 5                           # number of posts to show per page
