@@ -167,6 +167,11 @@ table.nt .bar { display: inline-block; height: 10px; background: var(--blue); bo
 .banner.right { right: 0; border-left: 3px solid var(--ink); }
 .wrap { position: relative; z-index: 1; }
 @media (max-width: 1259px) { .banner { display: none; } }
+/* Where the side banners are hidden, the same band runs across the top and bottom of the page instead */
+.band-h { display: none; height: 48px; background: var(--yellow) url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2756%27%20height=%2748%27%3E%3Ctext%20x=%2728%27%20y=%2734%27%20font-size=%2728%27%20text-anchor=%27middle%27%3E%F0%9F%92%B8%3C/text%3E%3C/svg%3E") repeat-x center; }
+.band-h.top { border-bottom: 3px solid var(--ink); }
+.band-h.bottom { border-top: 3px solid var(--ink); }
+@media (max-width: 1259px) { .band-h { display: block; } }
 @media (max-width: 820px) { .steps, .stats, .caveats, .method-grid, .inputs, .total-grid, .scen { grid-template-columns: 1fr; } }
 /* Let method columns shrink below their content width so the formula scrolls inside its box on phones */
 .method-grid > * { min-width: 0; }
@@ -193,12 +198,13 @@ table.nt .bar { display: inline-block; height: 10px; background: var(--blue); bo
 <body>
 <div class="banner left" aria-hidden="true"></div>
 <div class="banner right" aria-hidden="true"></div>
+<div class="band-h top" aria-hidden="true"></div>
 <div class="wrap">
   <a class="kicker" href="https://game.clinicaltrialsabundance.blog/">Inspired by Saloni Dattani’s clinical trial bottlenecks game</a>
   <h1>If AI found a better treatment for every deadly disease, what would it cost to prove it?</h1>
 
   <div class="prose">
-    <p>Getting new helpful medicines to patients is hard, and historically it’s been getting harder. From 1950 to 2010, the number of new approved drugs per billion dollars of R&amp;D spending (adjusted for inflation) halved roughly every nine years. In 2012, Jack Scannell and colleagues called this <strong>Eroom’s law</strong>, or “Moore’s law backwards”.<sup><a href="#s1">1</a></sup> One theory that explains this is the <strong>“better than the Beatles” problem</strong>: we’ve already made substantial progress on various diseases, and statistically speaking, it requires more and more patients (and therefore more and more funding) to demonstrate marginal improvements — just like how the next generation of pop stars needs to compete with the Beatles catalogue.</p>
+    <p>Getting new helpful medicines to patients is hard, and historically it’s been getting harder. From 1950 to 2010, the number of new approved drugs per billion dollars of R&amp;D spending halved roughly every nine years. In 2012, Jack Scannell and colleagues called this <strong>Eroom’s law</strong>, or “Moore’s law backwards”.<sup><a href="#s1">1</a></sup> One theory that explains this is the <strong>“better than the Beatles” problem</strong>: we’ve already made substantial progress on various diseases, and statistically speaking, it requires more and more patients (and therefore more and more funding) to demonstrate marginal improvements — just like how the next generation of pop stars needs to compete with the Beatles catalogue.</p>
     <p>Despite that progress, the global burden of disease is still enormous. Most positive visions of the future put forward by AI leaders today involve the use of AI to accelerate the eradication of this burden.<sup><a href="#s2">2</a></sup> But even if AI produces a miracle drug for every disease, we still need to run the clinical trials to prove that things are getting better.</p>
     <p>Saloni Dattani recently made a fun game to help illustrate the challenges in running these sorts of clinical trials.<sup><a href="#s3">3</a></sup> My main takeaway is that making trials go faster requires a lot of different innovations to come together; as per Amdahl’s law,<sup><a href="#s4">4</a></sup> there’s no quick fix.</p>
     <p>This page is about the cost of measuring that progress:</p>
@@ -317,6 +323,7 @@ table.nt .bar { display: inline-block; height: 10px; background: var(--blue); bo
     <p class="credit" style="margin-top:18px">Written and designed by Conor Igoe, using <a href="https://platform.edisonscientific.com/">Kosmos</a>.</p>
   </div>
 </div>
+<div class="band-h bottom" aria-hidden="true"></div>
 <div class="tip" id="tip" role="tooltip"></div>
 
 <script>
