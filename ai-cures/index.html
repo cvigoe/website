@@ -499,6 +499,32 @@ let drawPoa = () => {};
   };
   drawPoa();
   document.getElementById("poa-cap").innerHTML = `Dividing one by the other gives a crude <strong>price of anarchy</strong><sup><a href="#s11">11</a></sup> of about ${Math.round(ph3 / ideal)}.`; }
+document.getElementById("interp-head").textContent = `${bn1(IND.median_usd)} billion`;
+document.getElementById("hist-cost").textContent = `${bn1(IND.median_usd_by_rrr["rrr_0.23"])} billion`;
+document.getElementById("visit-total").textContent = `${bn1(IND.median_usd_visit)} billion`;
+document.getElementById("ans-sub").innerHTML = `to prove a halving of the rate of bad outcomes behind <strong>${share(IND.covered_named_share)} of the world’s deaths from specific diseases</strong>, if a benevolent coordinator ran the world’s phase 3 trials as one programme`;
+
+// --- Analytics (GoatCounter): page view via the script tag; these add read-depth, interaction and outbound-click events.
+const gcEvent = (name, title) => {
+  const send = () => window.goatcounter && window.goatcounter.count && window.goatcounter.count({ path: name, title: title || name, event: true });
+  if (window.goatcounter && window.goatcounter.count) send(); else window.addEventListener("load", send, { once: true });
+};
+const gcOnce = new Set(), gcOnceEvent = (name, title) => { if (!gcOnce.has(name)) { gcOnce.add(name); gcEvent(name, title); } };
+{ // read depth: fire once when each section's top reaches 70% of the way down the screen
+  const marks = { "answer-h": "answer", "chart-h": "chart", "poa-chart": "comparison", "method": "maths", "sources-h": "sources" };
+  let pending = Object.keys(marks).filter(id => document.getElementById(id)), ticking = false;
+  const check = () => {
+    ticking = false;
+    pending = pending.filter(id => {
+      if (document.getElementById(id).getBoundingClientRect().top < innerHeight * 0.7) { gcOnceEvent(`ai-cures-read-${marks[id]}`, `Read: ${marks[id]}`); return false; }
+      return true;
+    });
+    if (!pending.length) removeEventListener("scroll", onScroll);
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; setTimeout(check, 150); } };
+  addEventListener("scroll", onScroll, { passive: true });
+  check();
+}
 document.addEventListener("click", ev => {
   const a = ev.target.closest('a[href^="http"]');
   if (a) { try { gcEvent(`ai-cures-out-${new URL(a.href).hostname}`, (a.textContent || "").trim().slice(0, 80)); } catch (e) {} }
