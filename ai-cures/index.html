@@ -486,7 +486,7 @@ const money = v => v >= 1e9 ? `$${(v / 1e9).toFixed(v >= 1e10 ? 0 : 1)} billion`
 const share = v => `${Math.round(v * 100)}%`;
 const bn = v => `$${(v / 1e9).toFixed(v >= 1e10 ? 0 : 1)} billion`;
 const bn1 = v => `$${(v / 1e9).toFixed(1)}`;
-document.getElementById("ans-range").textContent = `About ${bn1(IND.median_usd)} billion`;
+document.getElementById("ans-range").textContent = `About $${Math.round(IND.median_usd / 1e9)} billion`;
 let drawPoa = () => {};
 { // Evaluate Pharma 2024 global R&D, in 2026 USD (CPI-U), x PhRMA 2024 phase III share: 27.4% of all R&D, or 39.1% of
   // R&D broken down by phase (30% is uncategorised).
@@ -524,7 +524,7 @@ let drawPoa = () => {};
   };
   drawPoa();
 }
-document.getElementById("interp-head").textContent = `${bn1(IND.median_usd)} billion`;
+document.getElementById("interp-head").textContent = `$${Math.round(IND.median_usd / 1e9)} billion`;
 if (IND.observed) { document.getElementById("obs-rrr").textContent = `${Math.round((1 - IND.observed.median_rr) * 100)}%`;
   document.getElementById("obs-cost").textContent = `${bn1(IND.observed.usd)} billion`; }
 document.getElementById("visit-total").textContent = `${bn1(IND.median_usd_visit)} billion`;
