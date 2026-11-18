@@ -252,9 +252,8 @@ table.nt .bar { display: inline-block; height: 10px; background: var(--blue); bo
   <div class="prose interp" style="margin:40px 0 0">
     <h2>What to make of this</h2>
     <p>The headline <span id="interp-head"></span> number surprised me in how small it was. In 2024 the global pharmaceutical industry spent something like <a href="#ph3-h" id="ph3-range"></a> on about 1,100 phase 3 trials (in 2026 dollars). I expected the bill for every major disease to be far bigger, even with a benevolent coordinator in charge.</p>
-    <figure class="poa" aria-labelledby="poa-cap">
+    <figure class="poa">
       <svg id="poa-chart" role="img" aria-label="Total trial cost against the size of improvement each trial must detect, with one year of industry phase 3 spending for comparison"></svg>
-      <figcaption id="poa-cap"></figcaption>
     </figure>
     <p>Part of the cost gap is the size of the assumed improvements. Halving the risk of a disease’s worst outcomes is a lot of progress, which needs fewer participants to produce significant results than standard clinical trials. In the pivotal trials establishing today’s best care, the risk of the bad outcomes was cut by a median of <span id="obs-rrr"></span>. Proving improvements of that size, rather than halvings, would cost about <span id="obs-cost"></span> in total.</p>
     <p>The other part is redundancy. Many companies compete to treat the same patients: by 2022 there were 5,683 trials testing drugs that block a single immune pathway, PD-1/PD-L1. This got so crowded that combination trials started to outstrip patient demand and the FDA had to call on drugmakers to collaborate to minimise redundancy.<sup><a href="#s8">8</a></sup> A newer immune target, TIGIT, has drawn 21 companies developing 30 drugs: about 49,000 patients in 220 trials, at an estimated cost of $3.1–3.6 billion.<sup><a href="#s9">9</a></sup> Across the drug R&amp;D pipeline, the number of cancer drugs in development per target rose from 1.8 in 2000 to 9 in 2022.<sup><a href="#s10">10</a></sup> The effort is lopsided too in terms of global welfare: cancer accounts for 38% of industry trial starts,<sup><a href="#s11">11</a></sup> but 18% of the world’s deaths.<sup><a href="#s5">5</a></sup></p>
@@ -500,7 +499,7 @@ let drawPoa = () => {};
     // Total cost of one trial per disease, against the reduction in risk each trial must detect (the curve is computed
     // on an even grid of m, risk ratio 0.77^m, so the x-axis is log(risk ratio)). The band is one year of phase 3 spending.
     const W = Math.max(280, Math.round(el.clientWidth || 720)), narrow = W < 520, H = narrow ? 330 : 360;
-    const L = narrow ? 50 : 62, R = 12, T = narrow ? 40 : 22, B = 44;
+    const L = narrow ? 70 : 84, R = 12, T = narrow ? 40 : 22, B = 44;
     const lx = m => L + (Math.log10(m) + 1) / 2 * (W - L - R);
     const ymin = 1e9, ymax = 4e12, ly = v => T + (Math.log10(ymax) - Math.log10(v)) / (Math.log10(ymax) - Math.log10(ymin)) * (H - T - B);
     const big = v => v >= 1e12 ? `$${(v / 1e12).toFixed(1)}T` : `$${v >= 1e10 ? Math.round(v / 1e9) : (v / 1e9).toFixed(1)}B`;
@@ -509,6 +508,7 @@ let drawPoa = () => {};
     const mOf = r => Math.log(1 - r) / Math.log(0.77);
     (narrow ? [0.05, 0.1, 0.25, 0.5, 0.9] : [0.05, 0.1, 0.25, 0.5, 0.75, 0.9]).forEach(r => s += `<line x1="${lx(mOf(r))}" x2="${lx(mOf(r))}" y1="${T}" y2="${H - B}" stroke="var(--grid)"/><text class="lab" x="${lx(mOf(r))}" y="${H - B + 18}" text-anchor="middle">${Math.round(r * 100)}%</text>`);
     s += `<text x="${(L + W - R) / 2}" y="${H - 4}" text-anchor="middle">Reduction in risk of the bad outcomes</text>`;
+    s += `<text transform="translate(14,${(T + H - B) / 2}) rotate(-90)" text-anchor="middle">${narrow ? "Cost of the pivotal trials" : "Total cost of the coordinated pivotal trials"}</text>`;
     s += `<rect x="${L}" y="${ly(hi)}" width="${W - L - R}" height="${ly(lo) - ly(hi)}" fill="var(--yellow)" opacity=".75"/>
       ${narrow ? `<rect x="${L}" y="8" width="14" height="10" fill="var(--yellow)"/><text x="${L + 20}" y="17">One year of industry phase 3 spending</text>`
                : `<text x="${W - R - 4}" y="${ly(hi) - 6}" text-anchor="end">One year of industry phase 3 spending</text>`}`;
@@ -523,7 +523,7 @@ let drawPoa = () => {};
     el.innerHTML = s;
   };
   drawPoa();
-  document.getElementById("poa-cap").innerHTML = `Total cost of one coordinated trial per disease, by how big a reduction in the risk of the bad outcome each trial must detect. At the ${Math.round((1 - IND.observed.median_rr) * 100)}% reduction the last generation of treatments achieved, a year of industry phase 3 spending is ${(lo / IND.observed.usd).toFixed(1)}–${(hi / IND.observed.usd).toFixed(1)} times the bill.`; }
+}
 document.getElementById("interp-head").textContent = `${bn1(IND.median_usd)} billion`;
 if (IND.observed) { document.getElementById("obs-rrr").textContent = `${Math.round((1 - IND.observed.median_rr) * 100)}%`;
   document.getElementById("obs-cost").textContent = `${bn1(IND.observed.usd)} billion`; }
