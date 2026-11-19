@@ -285,7 +285,7 @@ table.nt .bar { display: inline-block; height: 10px; background: var(--blue); bo
             <msqrt><msub><mi>p</mi><mn>0</mn></msub><mo>(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>0</mn></msub><mo>)</mo><mo>+</mo><msub><mi>p</mi><mn>1</mn></msub><mo>(</mo><mn>1</mn><mo>−</mo><msub><mi>p</mi><mn>1</mn></msub><mo>)</mo></msqrt>
           </math>
         </div>
-        <p class="small">Here <i>z</i><sub>1−α/2</sub> = 1.96 and <i>z</i><sub>1−β</sub> = 1.28 are the standard normal values for 5% two-sided significance and 90% power, and <i>p̄</i> = (<i>p</i><sub>0</sub> + <i>p</i><sub>1</sub>)/2. The total across both arms is <i>N</i> = 2<i>n</i>. The trial's cost is then <strong><i>N</i> × $53,904</strong>: Moore et al.’s median estimated cost per participant across 225 pivotal trials ($41,413), which I assume is in 2019 dollars and adjust by US consumer prices to 2026.<sup><a href="#s6">6</a>,<a href="#s7">7</a></sup> Their other measure, cost per clinic visit ($4,796 in 2026 dollars), prices each trial by its scheduled visits instead; that gives about <span id="visit-total"></span> in total. This is a fixed-time approximation, not the event-driven survival design many real trials use.</p>
+        <p class="small">Here <i>z</i><sub>1−α/2</sub> = 1.96 and <i>z</i><sub>1−β</sub> = 1.28 are the standard normal values for 5% two-sided significance and 90% power, and <i>p̄</i> = (<i>p</i><sub>0</sub> + <i>p</i><sub>1</sub>)/2. The total across both arms is <i>N</i> = 2<i>n</i>. The trial's cost is then <strong><i>N</i> × $53,904</strong>: Moore et al.’s median estimated cost per participant across 225 pivotal trials ($41,413), which I assume is in 2019 dollars and adjust by US consumer prices to 2026.<sup><a href="#s6">6</a>,<a href="#s7">7</a></sup> This is a fixed-time approximation, not the event-driven survival design many real trials use.</p>
         <div class="example" id="example"></div>
       </div>
       <div>
@@ -527,7 +527,6 @@ let drawPoa = () => {};
 document.getElementById("interp-head").textContent = `$${Math.round(IND.median_usd / 1e9)} billion`;
 if (IND.observed) { document.getElementById("obs-rrr").textContent = `${Math.round((1 - IND.observed.median_rr) * 100)}%`;
   document.getElementById("obs-cost").textContent = `${bn1(IND.observed.usd)} billion`; }
-document.getElementById("visit-total").textContent = `${bn1(IND.median_usd_visit)} billion`;
 document.getElementById("ans-sub").innerHTML = `to prove a halving of the rate of bad outcomes behind <strong>${share(IND.covered_deaths_share)} of the world’s deaths from disease</strong>, if a benevolent coordinator ran the world’s phase 3 trials as one programme`;
 
 // --- Analytics (GoatCounter): page view via the script tag; these add read-depth, interaction and outbound-click events.
